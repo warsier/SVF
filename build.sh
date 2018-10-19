@@ -5,8 +5,8 @@
 #########
 # Please change the following home directories of your LLVM builds
 ########
-LLVMRELEASE=/home/ysui/llvm-6.0.0/llvm-6.0.0.obj
-LLVMDEBUG=/home/ysui/llvm-6.0.0/llvm-6.0.0.dbg
+# LLVMRELEASE=/home/ysui/llvm-6.0.0/llvm-6.0.0.obj
+# LLVMDEBUG=/home/ysui/llvm-6.0.0/llvm-6.0.0.dbg
 
 if [[ $1 == 'debug' ]]
 then
@@ -31,5 +31,5 @@ else
 cmake ../
 fi
 cmake ../
-make -j4
+make -j
 

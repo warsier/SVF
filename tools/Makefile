@@ -8,6 +8,6 @@ LEVEL=..
 #
 # List all of the subdirectories that we will compile.
 #
-DIRS= WPA SABER MTA
+DIRS= WPA SABER MTA PIMProf
 
 include $(LEVEL)/Makefile.common
