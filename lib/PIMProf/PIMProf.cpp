@@ -12,13 +12,9 @@
 
 using namespace llvm;
 
-static cl::opt<bool> DumpSlice("dump-slice", cl::init(false),
-                               cl::desc("Dump dot graph of Saber Slices"));
-
-static cl::opt<unsigned> cxtLimit("cxtlimit",  cl::init(3),
-                                  cl::desc("Source-Sink Analysis Contexts Limit"));
 
 void PIMProf::analyze(SVFModule module) {
 	initialize(module);
 	finalize();
+	std::cout << "w" << std::endl;
 }

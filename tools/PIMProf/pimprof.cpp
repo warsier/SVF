@@ -71,7 +71,7 @@ int main(int argc, char ** argv) {
                                 "PIMProf\n");
 
     SVFModule svfModule(moduleNameVec);
-    // auto pimprof = new PIMProf();
-    // pimprof->analyze(svfModule);
+    auto pimprof = new PIMProf();
+    pimprof->analyze(svfModule);
     return 0;
 }
