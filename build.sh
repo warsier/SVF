@@ -31,5 +31,5 @@ else
 cmake ../
 fi
 cmake ../
-make -j
+make -j8
 

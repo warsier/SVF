@@ -60,6 +60,11 @@ public:
     virtual void finalize() {
         // dumpSlices();
     }
+
+    /// Get SVFG
+    inline const SVFG* getSVFG() const {
+        return graph();
+    }
 protected:
     void dumpSlices();
 };
