@@ -26,6 +26,7 @@
  // Author: Yulei Sui,
  */
 
+#include "PIMProf/PIMProf.h"
 #include "SABER/LeakChecker.h"
 #include "SABER/FileChecker.h"
 #include "SABER/DoubleFreeChecker.h"
@@ -67,25 +68,10 @@ int main(int argc, char ** argv) {
     std::vector<std::string> moduleNameVec;
     analysisUtil::processArguments(argc, argv, arg_num, arg_value, moduleNameVec);
     cl::ParseCommandLineOptions(arg_num, arg_value,
-                                "Source-Sink Bug Detector\n");
+                                "PIMProf\n");
 
     SVFModule svfModule(moduleNameVec);
-
-    LeakChecker *saber;
-
-    if(LEAKCHECKER)
-        saber = new LeakChecker();
-    else if(FILECHECKER)
-        saber = new FileChecker();
-    else if(DFREECHECKER)
-        saber = new DoubleFreeChecker();
-    else
-	saber = new LeakChecker();  // if no checker is specified, we use leak checker as the default one.
-
-    saber->runOnModule(svfModule);
-
-    svfModule.dumpModulesToFile(".dvf");
-
+    // auto pimprof = new PIMProf();
+    // pimprof->analyze(svfModule);
     return 0;
-
 }

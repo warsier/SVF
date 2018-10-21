@@ -49,7 +49,8 @@ set(SOURCES
     WPA/FlowSensitive.cpp
     WPA/FlowSensitiveStat.cpp
     WPA/TypeAnalysis.cpp
-    WPA/WPAPass.cpp)
+    WPA/WPAPass.cpp
+    PIMProf/PIMProf.cpp)
 
 add_llvm_loadable_module(Svf ${SOURCES})
 add_llvm_Library(LLVMSvf ${SOURCES})

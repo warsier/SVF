@@ -31,5 +31,5 @@ else
 cmake ../
 fi
 cmake ../
-make -j6
+make -j
 
