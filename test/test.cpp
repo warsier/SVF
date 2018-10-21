@@ -2,12 +2,12 @@
 
 using namespace std;
 
-int f1(z, y)
+int f1(int z, int y)
 {
 	return (z * y);
 }
 
-int f2(y)
+int f2(int y)
 {
 	return (y + 2);
 }
@@ -15,7 +15,7 @@ int f2(y)
 int main()
 {
 	int n;
-	cin << n;
+	cin >> n;
 	int z = 0;
 	int y = 0;
 	int i = 1;
