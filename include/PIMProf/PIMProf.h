@@ -18,9 +18,12 @@
 typedef CFLSolver<SVFG*,CxtDPItem> CFLSrcSnkSolver;
 
 class PIMProf : public CFLSrcSnkSolver {
-
+public:
+    typedef ProgSlice::SVFGNodeSet SVFGNodeSet;
+    typedef SVFGNodeSet::iterator SVFGNodeSetIter;
 private:
     ProgSlice* _curSlice;		/// current program slice
+    SVFGNodeSet sources;		/// source nodes
     SaberSVFGBuilder memSSA;
     SVFG* svfg;
     PathCondAllocator* pathCondAllocator;
@@ -65,6 +68,47 @@ public:
     inline const SVFG* getSVFG() const {
         return graph();
     }
+
+    /// Slice operations
+    //@{
+    void setCurSlice(const SVFGNode* src);
+
+    inline ProgSlice* getCurSlice() const {
+        return _curSlice;
+    }
+    inline void addSinkToCurSlice(const SVFGNode* node) {
+        _curSlice->addToSinks(node);
+        addToCurForwardSlice(node);
+    }
+    inline bool isInCurForwardSlice(const SVFGNode* node) {
+        return _curSlice->inForwardSlice(node);
+    }
+    inline bool isInCurBackwardSlice(const SVFGNode* node) {
+        return _curSlice->inBackwardSlice(node);
+    }
+    inline void addToCurForwardSlice(const SVFGNode* node) {
+        _curSlice->addToForwardSlice(node);
+    }
+    inline void addToCurBackwardSlice(const SVFGNode* node) {
+        _curSlice->addToBackwardSlice(node);
+    }
+    //@}
+
+    /// Get sources/sinks
+    //@{
+    inline const SVFGNodeSet& getSources() const {
+        return sources;
+    }
+    inline SVFGNodeSetIter sourcesBegin() const {
+        return sources.begin();
+    }
+    inline SVFGNodeSetIter sourcesEnd() const {
+        return sources.end();
+    }
+    inline void addToSources(const SVFGNode* node) {
+        sources.insert(node);
+    }
+    //@}
 protected:
     void dumpSlices();
 };
