@@ -2,28 +2,31 @@
 
 using namespace std;
 
-int f1(int z, int y)
+int func_first(int zeta, int gamma)
 {
-	return (z * y);
+	return (zeta * gamma);
 }
 
-int f2(int y)
+int func_second(int gamma)
 {
-	return (y + 2);
+	return (gamma + 2);
 }
 
 int main()
 {
-	int n;
-	cin >> n;
-	int z = 0;
-	int y = 0;
-	int i = 1;
-	while (i < n) {
-		z = f1(z, y);
-		y = f2(y);
-		i++;
+	int number = 5;
+	int zeta = 0;
+	int gamma = 0;
+	int *ptr = &zeta;
+	int iter = 1;
+	while (iter < number) {
+		if (iter < 3)
+			zeta = func_first(*ptr, gamma);
+		else 
+			zeta = func_first(iter, gamma);
+		gamma = func_second(zeta);
+		iter++;
 	}
-	cout << z;
-	return 0;
+
+	return gamma;
 }
