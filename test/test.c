@@ -1,10 +1,10 @@
-#include <iostream>
+#include <stdio.h>
 
-using namespace std;
 
 int func_first(int zeta, int gamma)
 {
-	return (zeta * gamma);
+	zeta = zeta * gamma * 2;
+	return (zeta + 1);
 }
 
 int func_second(int gamma)
